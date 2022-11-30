@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+service SubscriberService {
+    rpc GetAll (Empty) returns (SubscriberList) {}
+    rpc Get (SubscriberRequestId) returns (Subscriber) {}
+    rpc Insert (Subscriber) returns (Subscriber) {}
+    rpc Update (Subscriber) returns (Subscriber) {}
+    rpc Remove (SubscriberRequestId) returns (Empty) {}
+}
+
+message Empty {}
+
+message Subscriber {
+    string id = 1;
+    string name = 2;
+    string surname = 3;
+    string number = 4;
+    int32 age = 5;
+    string address = 6;
+}
+
+message SubscriberList {
+    repeated Subscriber subscribers = 1;
+}
+
+message SubscriberRequestId {
+    string id = 1;
+}
